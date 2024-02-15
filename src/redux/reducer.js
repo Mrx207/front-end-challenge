@@ -8,6 +8,7 @@ import {
 const initialState = {
   loading: true,
   data: [],
+  filteredData: [],
   error: "",
 };
 
@@ -22,6 +23,7 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         data: action.payload,
+        filteredData: action.payload,
         error: "",
         loading: false,
       };
@@ -29,21 +31,21 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         data: [],
+        filteredData: [],
         error: action.payload,
         loading: false,
       };
     case FETCH_FILTERED_DATA:
-      return {
-        ...state,
-        data:
-          action.payload.trim() !== ""
-            ? state.data.filter(({ name }) =>
-                name.toLowerCase().includes(action.payload.toLowerCase())
-              )
-            : state.data,
-        error: "",
-        loading: false,
-      };
+      const searchTerm = action.payload.toLowerCase();
+      // If search term is empty, return original data
+      if (!searchTerm.trim()) {
+        return { ...state, filteredData: state.data };
+      }
+      // Otherwise, filter the data based on the search term
+      const filteredData = state.data.filter((item) =>
+        item.name.toLowerCase().includes(searchTerm)
+      );
+      return { ...state, filteredData };
     default:
       return state;
   }

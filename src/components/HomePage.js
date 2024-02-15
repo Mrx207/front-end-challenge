@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import ProductDescription from "./ProductDescription";
 
-function HomePage({ data, fetchData }) {
+function HomePage({ data, fetchData, filteredData }) {
   const [selectedId, setSelectedId] = useState();
   useEffect(() => {
     fetchData();
@@ -22,7 +22,7 @@ function HomePage({ data, fetchData }) {
             </p>
           </div>
 
-          {data
+          {filteredData
             .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
             .map(({ name, id, headline }) => (
               <button
@@ -48,6 +48,7 @@ function HomePage({ data, fetchData }) {
 const mapStateToProps = (state) => {
   return {
     data: state.data,
+    filteredData: state.filteredData,
   };
 };
 

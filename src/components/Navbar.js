@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { fetchFilteredData } from "../redux/actions";
+import { useDispatch } from "react-redux";
 
 function Navbar({ fetchFilteredData }) {
+  const [searchParam, setSearchParam] = useState("");
+  const dispatch = useDispatch();
+  useEffect(() => {
+    // Pass in a callback function!
+    fetchFilteredData(searchParam);
+  }, [searchParam]);
   return (
     <NavContainer>
       <div className="nav-center">
@@ -11,7 +18,7 @@ function Navbar({ fetchFilteredData }) {
           <input
             name="search"
             placeholder="search here"
-            onChange={(e) => fetchFilteredData(e.target.value)}
+            onChange={(e) => setSearchParam(e.target.value)}
           />
         </div>
       </div>
