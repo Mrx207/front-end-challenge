@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import { fetchFilteredData } from "../redux/actions";
 import { useDispatch } from "react-redux";
+import { FaRegUserCircle } from "react-icons/fa";
 
 function Navbar({ fetchFilteredData }) {
   const [searchParam, setSearchParam] = useState("");
@@ -20,6 +21,7 @@ function Navbar({ fetchFilteredData }) {
             placeholder="search here"
             onChange={(e) => setSearchParam(e.target.value)}
           />
+          <FaRegUserCircle />
         </div>
       </div>
     </NavContainer>
@@ -45,6 +47,7 @@ const NavContainer = styled.nav`
   display: flex;
   align-items: center;
   justify-content: center;
+  background: antiquewhite;
 
   .nav-center {
     width: 90vw;
@@ -69,15 +72,13 @@ const NavContainer = styled.nav`
       font-size: 2rem;
     }
   }
+  input {
+    font-size: medium;
+  }
 
   @media (min-width: 992px) {
     .nav-toggle {
       display: none;
-    }
-    .nav-center {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      align-items: center;
     }
   }
 `;

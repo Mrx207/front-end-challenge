@@ -75,12 +75,13 @@ const Wrapper = styled.section`
   .container {
     display: flex;
     gap: 20px;
+    margin: 0 50px;
   }
   .left-container {
     width: 50%;
   }
   .right-container {
-    width: 50%;
+    max-width: 50%;
   }
   .right-title {
     margin: 0;
