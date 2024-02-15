@@ -25,11 +25,21 @@ function ProductDescription({ id, data }) {
                   <p>{license}</p>
                   <p>{created_at}</p>
                 </div>
-                <p>{version}</p>
+                <div>{version}</div>
               </div>
-
               <p>{description}</p>
-              <p>{dependencies}</p>
+              <div className="para-section">
+                <span className="sub-title">Dependencies:</span>
+                <p>{dependencies}</p>
+              </div>
+              <div className="para-section">
+                <span className="sub-title">Imports:</span>
+                <p> {imports}</p>
+              </div>
+              <div className="para-section">
+                <span className="sub-title">Authors:</span>
+                <p>{authors}</p>
+              </div>
             </div>
           )
         )}
@@ -40,10 +50,26 @@ function ProductDescription({ id, data }) {
 export default ProductDescription;
 
 const Wrapper = styled.section`
+  .para-section p {
+    margin-top: 0;
+  }
+  .para-section {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
   .top-section {
     display: flex;
+    justify-content: space-between;
+    align-items: baseline;
   }
   .title-section {
     width: 50%;
+  }
+  .title-section p {
+    margin-top: 0;
+  }
+  .sub-title {
+    font-weight: bold;
   }
 `;

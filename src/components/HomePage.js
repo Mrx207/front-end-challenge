@@ -32,7 +32,7 @@ function HomePage({ data, fetchData }) {
             ))}
         </div>
         <div className="right-container">
-          <h3>Packages</h3>
+          <h3 className="right-title">Packages</h3>
           <ProductDescription id={selectedId} data={data} />
         </div>
       </div>
@@ -70,5 +70,12 @@ const Wrapper = styled.section`
   }
   .right-container {
     width: 50%;
+  }
+  .right-title {
+    margin: 0;
+    color: blue;
+  }
+  .title {
+    margin: 0;
   }
 `;

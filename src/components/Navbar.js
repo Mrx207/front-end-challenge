@@ -47,7 +47,7 @@ const NavContainer = styled.nav`
   .nav-header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     img {
       width: 175px;
       margin-left: -15px;
