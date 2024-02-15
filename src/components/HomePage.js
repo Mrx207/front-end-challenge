@@ -25,12 +25,17 @@ function HomePage({ data, fetchData }) {
           {data
             .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
             .map(({ name, id, headline }) => (
-              <button key={id} onClick={() => setSelectedId(id)}>
-                <p>{name}</p>
-                <p>{headline}</p>
+              <button
+                key={id}
+                className="btn"
+                onClick={() => setSelectedId(id)}
+              >
+                <p className="name-text">{name}</p>
+                <p className="headline-text">{headline}</p>
               </button>
             ))}
         </div>
+        <div className="vertical-line"></div>
         <div className="right-container">
           <h3 className="right-title">Packages</h3>
           <ProductDescription id={selectedId} data={data} />
@@ -61,9 +66,14 @@ const Wrapper = styled.section`
     background: transparent;
     text-align: left;
     cursor: pointer;
+    line-height: 1.5;
+  }
+  .vertical-line {
+    border-left: 1px solid lightgray;
   }
   .container {
     display: flex;
+    gap: 20px;
   }
   .left-container {
     width: 50%;
@@ -77,5 +87,12 @@ const Wrapper = styled.section`
   }
   .title {
     margin: 0;
+  }
+  .name-text {
+    margin-bottom: 0;
+    font-weight: bold;
+  }
+  .headline-text {
+    margin-top: 0;
   }
 `;

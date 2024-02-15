@@ -62,6 +62,7 @@ const Wrapper = styled.section`
     display: flex;
     justify-content: space-between;
     align-items: baseline;
+    margin-top: 5px;
   }
   .title-section {
     width: 50%;
